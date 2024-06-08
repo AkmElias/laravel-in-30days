@@ -10,16 +10,20 @@ Route::get('/', function () {
 Route::get('jobs/', function (){
     $jobs = Job::with('employer')->simplePaginate(3);
 
-    return view('jobs', [
+    return view('jobs.index', [
         'jobs' => $jobs,
     ]);
+});
+
+Route::get('jobs/create', function () {
+    return view('jobs.create');
 });
 
 Route::get('jobs/{id}', function ($id) {
     // $job = Arr::first($jobs, fn ($job) => $job['id'] == $id); another way to get the job
     $job = Job::find($id);
 
-    return view('job', [
+    return view('jobs.show', [
         'job' => $job,
     ]);
 });
