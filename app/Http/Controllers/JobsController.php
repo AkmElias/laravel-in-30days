@@ -48,7 +48,7 @@ class JobsController extends Controller
         // $job->employer_id = 1;
         // $job->save();
 
-        Mail::to($job->employer->user)->send(
+        Mail::to('eliascse33@gmail.com')->send(
             new \App\Mail\JobPosted($job)
         );
 
